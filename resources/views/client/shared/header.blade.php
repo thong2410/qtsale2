@@ -53,8 +53,25 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a class="scrollTo" data-scrollTo="contact" href="#">Liên Hệ</a></li>
-                            <li class="Hotline"><button type="button" class="btn btn-primary">Hotline</button></li>
+                            @guest
+                            <li><a href="#">Liên Hệ</a>
+                                <ul class="sub-menu">
+                                    <li><a href="{{URL::to('/authlogin')}}">Đăng Nhập</a>
+                                    </li>
+                                    <li><a href="{{URL::to('/sigup')}}">Đăng Kí</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            @else 
+                            <li><a href="#">{{Auth::user()->customer_name}}</a>
+                                <ul class="sub-menu">
+                                    <li><a href="{{URL::to('/')}}">Thông Tin Tài Khoản</a>
+                                    </li>
+                                    <li><a href="{{route('logout')}}">Đăng Xuất</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            @endif
                         </ul>
                     </nav>
                     {{-- <form role="search" method="get" id="searchform" action="{{route('search')}}">
