@@ -18,56 +18,49 @@
     <link rel="stylesheet" href="../login/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="../login/css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="../login/css/style.css" type="text/css">
+    @include('client.shared.master')
 </head>
 
 <body>
-
+@include('client.shared.header')
 
     <section class="checkout spad">
         <div class="container">
-
-            <form action="#"class="checkout__form">
+            @if(session('errLogin'))
+                <div class="alert alert-danger">
+                    {{ session('errLogin') }}
+                </div>
+            @endif
+            <form action="{{URL::to('/sigup')}}" method="POST" class="checkout__form">
+            {{csrf_field()}}
                 <div class="row">
                     <div class="col-lg-2"></div>
                     <div class="col-lg-8">
                         <h5>Register</h5>
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="checkout__form__input">
-                                    <p>First Name <span>*</span></p>
-                                    <input type="text"placeholder="first name">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="checkout__form__input">
-                                    <p>Last Name <span>*</span></p>
-                                    <input type="text" placeholder="last name">
-                                </div>
-                            </div>
                             <div class="col-lg-12">
                                 <div class="checkout__form__input">
-                                    <p>Address <span>*</span></p>
-                                    <input type="text" placeholder="Street Address">
+                                    <p>Full Name <span>*</span></p>
+                                    <input type="text" name="customer_name" placeholder="full name">
                                 </div>
-
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
                                     <p>Phone <span>*</span></p>
-                                    <input type="text" placeholder="Phone">
+                                    <input type="text" name="customer_phone" placeholder="Phone">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
                                     <p>Email <span>*</span></p>
-                                    <input type="email" placeholder="Email">
+                                    <input type="email" name="customer_email" placeholder="Email">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="checkout__form__checkbox">
                                     <div class="checkout__form__input">
                                         <p>Account Password <span>*</span></p>
-                                        <input type="password" placeholder="Password" >
+                                        <input type="password" name="password" placeholder="Password" >
                                     </div>
 
                                 </div>
@@ -79,7 +72,7 @@
             </div>
         </section>
         <!-- Checkout Section End -->
-
+        @include('client.shared.footer')
 
         <!-- Js Plugins -->
         <script src="../login/js/jquery-3.3.1.min.js"></script>

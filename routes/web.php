@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,3 +102,14 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('tinh-trang/da-huy', 'admin\ordercontroller@dahuy'); //4
     });
 });
+
+//login
+Route::get('sigup', 'LoginController@GetSigup');
+Route::post('sigup', 'LoginController@PostSigup');
+Route::get('authlogin', 'LoginController@GetLogin');
+Route::post('authlogin', 'LoginController@PostLogin')->name('login');
+// làm 1 route để log out
+Route::get('/logout', function() {
+    Auth::logout();
+    return redirect("/");
+})->name('logout');
