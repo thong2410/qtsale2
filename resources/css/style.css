@@ -1,0 +1,26 @@
+#logo {
+    padding: 30px;
+    font-size: 40px;
+    font-family: 'Bree Serif', serif;
+    text-shadow: white 3px 3px 6px;
+    color: yellowgreen;
+}
+
+#menu {
+    background-color: #000066;
+}
+
+.headersp {
+    padding: 1em;
+    color: #0033FF;
+}
+
+.add {
+    float: right;
+    color: white;
+}
+
+.images {
+    width: 100px;
+    height: 100px;
+}
