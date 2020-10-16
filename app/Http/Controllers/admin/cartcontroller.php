@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\products;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class cartcontroller extends Controller
 {
@@ -58,15 +59,22 @@ class cartcontroller extends Controller
     public function checkout()
     {
 
-        $product = Cart::content();
 
-        return view('page.checkout', ['cart' => $product]);
+        $product = Cart::content();
+        $CheckAuth = Auth::check();
+        if (!$CheckAuth) {
+            return redirect('authlogin')->with('thongbao', 'Vui lòng đăng nhập để thực hiện thanh toán !');
+        } else {
+            $nguoi = Auth::user()::where('customer_id', Auth::user()->customer_id)->get();
+            return view('page.checkout', ['cart' => $product, 'nguoidung' => $nguoi]);
+        }
     }
 
     public function Postcheckout(Request $request)
     {
         $total_price = str_replace(',', '', Cart::subtotal(0, 3));
         $orders_id = orders::insertGetId([
+            'customer_id' => $request->customer_id,
             'id_stt' => 1,
             'order_date' => Carbon::now(),
             'order_name' => $request->order_name,

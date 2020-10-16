@@ -4,24 +4,36 @@
 
     <section class="checkout spad">
         <div class="container">
+
             <form action="" method="POST" class="checkout__form">
                 @csrf
                 <div class="row">
                     <div class="col-lg-8">
                         <h5>Billing detail</h5>
                         <div class="row">
-
                             <div class="col-lg-12">
                                 <div class="checkout__form__input">
+
                                     <p>Họ Và tên<span>*</span></p>
-                                    <input type="text" name="order_name">
+                                    <input type="text" value="" name="order_name">
+
+
                                 </div>
+
+                                <div class="checkout__form__input">
+                                    @foreach ($nguoidung as $nguoi)
+
+                                    <input type="text" hidden name="customer_id" value="{{$nguoi->customer_id}}">
+                                    @endforeach
+                                </div>
+
                                 <div class="checkout__form__input">
                                     <p>Địa Chỉ <span>*</span></p>
                                     <input type="text" name="address" placeholder="">
                                 </div>
 
                             </div>
+
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
                                     <p>Phone <span>*</span></p>

@@ -24,4 +24,8 @@ class orders extends Model
     {
         return $this->belongsTo('App\status', 'id_stt', 'id');
     }
+    public function customer()
+    {
+        return $this->belongsTo('App\customer', 'customer_id', 'customer_id');
+    }
 }

@@ -27,6 +27,7 @@
     <!-- Checkout Section Begin -->
     <section class="checkout spad ">
         <div class="container">
+
             @if(count($errors)>0)
                 <div class="alert alert-danger">
                     @foreach($errors->all() as $err)
@@ -74,12 +75,12 @@
                                     <strong>Login With Facebook</strong>
                                 </a>
                         </div>
-                        
+
                         <button type="submit" class="site-btn">Login</button>
                     </div>
                     <div class="col-lg-2"></div>
                 </form>
-            </div>  
+            </div>
         </section>
         <!-- Checkout Section End -->
 
