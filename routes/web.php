@@ -38,7 +38,7 @@ Route::group(['prefix' => 'gio-hang'], function () {
     Route::get('thanh-toan', 'admin\cartcontroller@checkout');
     Route::post('thanh-toan', 'admin\cartcontroller@Postcheckout');
     Route::post('thanhcong', 'admin\cartcontroller@Postcheckout');
-    
+
 
 });
 
@@ -100,6 +100,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('tinh-trang/dang-giao-hang', 'admin\ordercontroller@danggiaohang'); // 2
         Route::get('tinh-trang/da-giao', 'admin\ordercontroller@dagiao'); //3
         Route::get('tinh-trang/da-huy', 'admin\ordercontroller@dahuy'); //4
+        Route::get('don-hang-cua-toi', 'admin\ordercontroller@donhangcuatoi');
+
     });
 });
 

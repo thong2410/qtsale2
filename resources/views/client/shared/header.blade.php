@@ -19,11 +19,11 @@
                                 </ul>
                             </li>
                              <li><a href="product">Sản Phẩm</a>
-                                <ul class="sub-menu">
+                                {{-- <ul class="sub-menu">
                                     <?php foreach ($type_Products as $value): ?>
                                         <li><a href="{{route('loaisanpham',$value['id_type'])}}">{{$value['name']}}</a></li>
                                     <?php endforeach ?>
-                                </ul>
+                                </ul> --}}
                             </li>
                             <li><a href="#">Giải Pháp</a>
                                 <ul class="sub-menu">
@@ -54,18 +54,21 @@
                                 </ul>
                             </li>
                             @guest
-                            <li><a href="#">Liên Hệ</a>
+                            <li><a href="#">Tài Khoản</a>
                                 <ul class="sub-menu">
                                     <li><a href="{{URL::to('/authlogin')}}">Đăng Nhập</a>
                                     </li>
+
                                     <li><a href="{{URL::to('/sigup')}}">Đăng Kí</a>
                                     </li>
                                 </ul>
                             </li>
-                            @else 
+                            @else
                             <li><a href="#">{{Auth::user()->customer_name}}</a>
                                 <ul class="sub-menu">
                                     <li><a href="{{URL::to('/')}}">Thông Tin Tài Khoản</a>
+                                    </li>
+                                    <li><a href="admin/orders/don-hang-cua-toi">Đơn Hàng của Tôi</a>
                                     </li>
                                     <li><a href="{{route('logout')}}">Đăng Xuất</a>
                                     </li>

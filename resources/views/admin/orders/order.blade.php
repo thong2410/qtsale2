@@ -11,6 +11,7 @@
             <thead>
               <tr>
                 <th>ID</th>
+                <th>ID User</th>
                 <th>Tên</th>
                 <th>Số Điện Thoại</th>
                 <th>Tổng Giá</th>
@@ -24,6 +25,7 @@
                 @foreach ($db as $item)
                 <tr>
                   <th scope="row">{{ $item ->order_id }}</th>
+                  <td>{{ $item->customer_id }}</td>
                   <td>{{ $item->order_name }}</td>
                   <td>{{ $item ->order_sdt }}</td>
                   <td>{{ number_format($item ->total_price,2,",",".") }} VNĐ</td>

@@ -142,7 +142,7 @@
 </div>
 
  @endforeach
-{{--
+
  <table class="table table-hover">
     <thead>
       <tr>
@@ -166,8 +166,8 @@
             <td>{{ $i->name }}</td>
             <td><img width="50" src="../codeADM/images/product/{{ $i->image }}" alt=""></td>
             <td>{{ number_format($i->pivot->total,2,",",".") }} VND</td>
-            <td>{{ $i->pivot->weight }}</td>
-            <td>{{ number_format($i->pivot->total * $i->pivot->weight,2,",",".") }} đ</td>
+            <td>{{ $i->pivot->quantity }}</td>
+            <td>{{ number_format($i->pivot->total * $i->pivot->quantity,2,",",".") }} đ</td>
 
 
           </tr>
@@ -175,7 +175,7 @@
           @endforeach
 
     </tbody>
-  </table> --}}
+  </table>
 
 
 

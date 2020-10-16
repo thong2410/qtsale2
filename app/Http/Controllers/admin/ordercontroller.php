@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\orders;
 use Illuminate\Http\Request;
@@ -48,5 +48,20 @@ class ordercontroller extends Controller
     {
         $db = orders::where('id_stt', 4)->paginate(15);
         return view('admin.orders.order', ['db' => $db]);
+    }
+    public function donhangcuatoi()
+    {
+        $id = Auth::user()->customer_id;
+
+        $hoadon = orders::where([
+            ['id_stt','<=', 3],
+            ['customer_id', $id],
+            ])->latest('order_id')->get();
+
+        $sohoadon = orders::where([
+            ['id_stt','<=', 3],
+            ['customer_id', $id],
+            ])->latest('order_id')->count();
+        return view('page.orderuser', ['db' => $hoadon, 'sodon' => $sohoadon]);
     }
 }
