@@ -6,11 +6,6 @@
             <div class="card-body">
                 <h3>thêm sản phẩm mới</h3>
                     <div class="headersp">
-                        <div class="row">
-                            <div class="col-6">
-                                <h1>Thêm loại sản phẩm</h1>
-                            </div>
-                        </div>
                         <div class="container-fluid">
                             @if (session('thongbao'))
                                 <div class="alert alert-success" role="alert">
@@ -24,7 +19,7 @@
                                     <input type="text" class="form-control" name="name" placeholder="tên loại sản phẩm mới">
                                     @if ($errors->has('name'))
                                         <div  class="form-group">
-                                            <label for="exampleInputPassword1" class="text-secondary">{{ $errors->first('name')}}</label>
+                                            <label for="exampleInputPassword1" class="text-danger">{{ $errors->first('name')}}</label>
                                         </div>
                                     @endif
                                 </div>
@@ -33,7 +28,6 @@
                                 </div>
                             </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
