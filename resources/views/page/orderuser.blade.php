@@ -37,7 +37,7 @@
             </ul>
             </div>
 
-            <table class="table table-hover">
+            {{-- <table class="table table-hover">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">STT</th>
@@ -69,7 +69,7 @@
                       @endforeach
 
                 </tbody>
-              </table>
+              </table> --}}
             <div class="card-body">
                 <h5 class="card-title">Tình trạng đơn hàng</h5>
                 <div class="row">
@@ -79,11 +79,11 @@
                         <h4 class="card-link">{{$item->getstatus->status_order }}</h4>
                         </div>
 
-                        <div class="col-lg6">
+                        {{-- <div class="col-lg6">
                             @if (($item->id_stt) ==1)
                             <a href="gio-hang/huydon/{{ $item->id }}">Hủy đơn hàng</a>
                             @endif
-                        </div>
+                        </div> --}}
                       </div>
 
                     </div>
