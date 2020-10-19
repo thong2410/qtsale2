@@ -21,7 +21,7 @@
                         <li><a href="{{route('product')}}">Sản Phẩm</a>
                                 <ul class="sub-menu">
                                     <?php foreach ($type_Products as $value): ?>
-                                        <li><a href="{{route('loaisanpham',$value['id_type'])}}">{{$value['name']}}</a></li>
+                                        <li><a href="{{route('type',$value['id_type'])}}">{{$value['name']}}</a></li>
                                     <?php endforeach ?>
                                 </ul>
                             </li>

@@ -39,10 +39,10 @@
     </div>
     <article style="width: 80%;">
         <div style="height: 680px;width: 50%; float: left;">
-            <a href="{{route('loaisanpham',1)}}"> <img src="img/product/typeNAm.jpg" style=";height: 680px; width:99%;"></a>
+            <a href="{{route('type',1)}}"> <img src="img/product/typeNAm.jpg" style=";height: 680px; width:99%;"></a>
         </div>
         <div style="height: 680px;width:50%;float:left;">
-            <a href="{{route('loaisanpham',2)}}"><img src="img/product/typeNu.jpg" style="height: 680px; width: 99%;"></a>
+            <a href="{{route('type',2)}}"><img src="img/product/typeNu.jpg" style="height: 680px; width: 99%;"></a>
         </div>
     </article>
   </section>
@@ -66,7 +66,7 @@
         @foreach ($new_products as $new)
         <div class="item  col-xs-3 col-lg-3" style="height: 450px; width: 24%;">
             <div class="thumbnail" style="height: 350px;">
-               <a href="{{route('chitietsanpham',$new->product_id)}}"> <img class="group list-group-image" style="width: 100%; height: 100%;" src="../codeADM/images/product/{{$new['image']}}" alt="Sản phẩm 4" width="300" height="200"></a>
+               <a href="{{route('details',$new->product_id)}}"> <img class="group list-group-image" style="width: 100%; height: 100%;" src="../codeADM/images/product/{{$new['image']}}" alt="Sản phẩm 4" width="300" height="200"></a>
              <div class="caption">
              <h4 class="group inner list-group-item-heading"  style="text-align: center"><strong>{{$new->name}}</strong></h4>
               <div class="row">
