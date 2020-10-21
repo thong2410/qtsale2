@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,17 +64,14 @@
                     <p class="vote"><strong>91%</strong> of người mua hài lòng với sản phẩm này <strong>(87 bình
                             chọn)</strong>
                     </p>
-
                     <h5 class="colors">Màu: <span class="color orange not-available" data-toggle="tooltip"
                             title="Not In store"></span>
                         <span class="color red"></span>
                         <span class="color blue"></span>
                         <span class="color black"></span>
                     </h5>
-
                     <div class="row">
                         <button class="add-to-cart btn btn-default" type="button" style="height: 50px;">MUA NGAY</button>
-
                     </div>
                 </div>
             </div>
@@ -85,10 +81,10 @@
 <section class="container">
     <div class="sp1" style="width: 100%; height: auto;">
         <div style="width: 45%; float: left; height: 500px;">
-            <img src="../codeADM/images/product/{{$sanpham->image}}" style="height:500px;width: 500px;padding: 5px;border: 1px solid;box-shadow: 1px 1px inset; border-radius: 15px;">
+            <img src="../codeADM/images/product/{{$product->image}}" style="height:500px;width: 500px;padding: 5px;border: 1px solid;box-shadow: 1px 1px inset; border-radius: 15px;">
         </div>
         <article style="width:55%; float: left; height: 500px;">
-            <h3> {{$sanpham->name}}</h3>
+            <h3> {{$product->name}}</h3>
             <div class="rating">
                 <div class="stars">
                     <span class="fa fa-star" style="color: rgb(252, 214, 0)"></span>
@@ -102,18 +98,17 @@
             <div>
                 <h3>Mô tả về sản phẩm này</h3>
                 <p class="product-description">
-                    {{$sanpham->description}}
+                    {{$product->description}}
                 </p>
             </div>
             <div>
-                <h4 class="price">Giá bán: {{number_format($sanpham->price)}} đồng</h4>
+                <h4 class="price">Giá bán: {{number_format($product->price)}} đồng</h4>
             </div>
             <p class="vote"><strong>91%</strong> of người mua hài lòng với sản phẩm này <strong>(87 bình
                 chọn)</strong>
             </p>
             <div class="row">
-
-               <button class="add-to-cart btn btn-default" type="button" style="height: 50px;">MUA NGAY</button>
+                <button class="add-to-cart btn btn-default" type="button" style="height: 50px;">MUA NGAY</button>
             </div>
         </article>
     </div>
@@ -124,9 +119,9 @@
             <p style="text-align: center">—————————————————————— ❉ ——————————————————————</p>
             <p style="text-align: center; font-size:20px" >Những sản phẩm thời trang mới nhất/hot nhất</p>
         </div>
-        @foreach ($sp_tuongtu as $sp)
+        @foreach ($similar_product as $sp)
         <div style="width: 24%; float: left;height: 350px; margin-bottom: 80px;margin-left:10px;  box-shadow: 4px 4px       10px#888888;">
-            <a href="{{route('chitietsanpham',$sp->product_id)}}"><img src="../codeADM/images/product/{{$sp['image']}}" class="card-img-top" style="height: 350px; padding: 40px;" alt="Image"></a>
+            <a href="{{route('details',$sp->product_id)}}"><img src="../codeADM/images/product/{{$sp['image']}}" class="card-img-top" style="height: 350px; padding: 40px;" alt="Image"></a>
             <a href="#giohang">
                 <div class="card-footer">
                     <span class="flash-sale" style="width: 100%;font-size:17px;"><p style="text-align: center; font-size: 20px;font-weight: bold;color: #333333	; padding: 1em; display:inline-block;">{{number_format($sp->price)}} đồng</p></span>
@@ -136,7 +131,7 @@
         <?php endforeach ?>
     </div>
     <div class="container-fluid " style="padding-left: 470px">
-        {!! $sp_tuongtu->links() !!}
+        {!! $similar_product->links() !!}
     </div>
 </section>
 @include('client.layout.footer')
