@@ -48,6 +48,10 @@
   </section>
   <section class="container">
     {{-- san pham --}}
+    <form role="search" class="searchcontainer" method="get" id="searchform" action="{{route('search')}}">
+
+        <input type="text" value="" name="key" id="key"  class="searchinput" placeholder="Nhập từ khóa..." />
+    </form>
     <div style="height: 200px;" >
         <h2 style="padding: 20px; text-align: center; font-size:50px">Sản Phẩm Mới</h2>
         <p style="text-align: center">—————————————————————— ❉ ——————————————————————</p>

@@ -19,11 +19,11 @@
                                 </ul>
                             </li>
                              <li><a href="product">Sản Phẩm</a>
-                                {{-- <ul class="sub-menu">
+                                <ul class="sub-menu">
                                     <?php foreach ($type_Products as $value): ?>
                                         <li><a href="{{route('loaisanpham',$value['id_type'])}}">{{$value['name']}}</a></li>
                                     <?php endforeach ?>
-                                </ul> --}}
+                                </ul>
                             </li>
                             <li><a href="#">Giải Pháp</a>
                                 <ul class="sub-menu">
@@ -81,6 +81,7 @@
                         <input type="text" value="" name="key" id="key" placeholder="Nhập từ khóa..." />
                         <button class="fa fa-search" type="submit" name="searchsubmit" id="searchsubmit"></button>
                     </form> --}}
+
 
                 </div>
 
