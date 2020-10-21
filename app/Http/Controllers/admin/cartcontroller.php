@@ -76,7 +76,7 @@ class cartcontroller extends Controller
         $orders_id = orders::insertGetId([
             'customer_id' => $request->customer_id,
             'id_stt' => 1,
-            'order_date' => Carbon::now(),
+            'order_date' => Carbon::now('Asia/Ho_Chi_Minh'),
             'order_name' => $request->order_name,
             'order_sdt' => $request->order_sdt,
             'total_price' => (int) $total_price,
