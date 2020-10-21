@@ -30,7 +30,7 @@
                   <td>{{ $item ->order_sdt }}</td>
                   <td>{{ number_format($item ->total_price,2,",",".") }} VNĐ</td>
                   <td>{{$item->getstatus->status_order }}</td>
-                 <td><form action="xac-nhan-tinh-trang" method="POST">
+                 <td><form action="confirm_status" method="POST">
                     @csrf
                  <input type="hidden" name="order_id" value="{{$item->order_id}}" >
 
@@ -46,8 +46,8 @@
                   </form></td>
 
 
-                  <td><a class="btn btn-success" href="chitiet/{{ $item ->order_id }}">Chi tiết</a></td>
-                  <td><a class="btn btn-danger" href="xoa/{{ $item ->order_id }}">Xóa</a></td>
+                  <td><a class="btn btn-success" href="detail/{{ $item ->order_id }}">Chi tiết</a></td>
+                  <td><a class="btn btn-danger" href="delete/{{ $item ->order_id }}">Xóa</a></td>
 
                 </tr>
               @endforeach

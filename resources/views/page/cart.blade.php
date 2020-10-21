@@ -38,7 +38,7 @@
 
                                         <div class="col-lg-4">
                                             <div class="col-lg-4">
-                                                <form action="cap-nhap-soluong" method="post">
+                                                <form action="update-quantity" method="post">
                                                   @csrf
                                                   <input type="hidden" name="rowId" value="{{ $prod->rowId }}">
                                                   <input min="1" max="100" style="width: 50px;height: 40px;border-radius: 5px;padding: 5px;border: 1px solid;margin: 4px -8px -8px 0px;" value="{{ $prod->qty }}" type="number" name="weight">
@@ -49,7 +49,7 @@
                                     <td class="cart__total"> {{ number_format($prod->price * $prod->qty,0,',','.') }} đ</td>
                                     <td class="cart__total"> <button class="btn btn-danger" type="submit">Update</button></td>
                                 </form>
-                                    <td class="cart__close"><a href="xoa/{{ $prod->rowId }}"><span class="icon_close"></span></a></td>
+                                    <td class="cart__close"><a href="delete/{{ $prod->rowId }}"><span class="icon_close"></span></a></td>
 
                                 </tr>
 
@@ -70,7 +70,7 @@
 
                             <li>Total <span>{{ Cart::subtotal() }} đ</span></li>
                         </ul>
-                        <a href="thanh-toan" class="primary-btn">Proceed to checkout</a>
+                        <a href="checkout" class="primary-btn">Proceed to checkout</a>
                     </div>
                 </div>
             </div>

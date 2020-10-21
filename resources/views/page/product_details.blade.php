@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,17 +64,14 @@
                     <p class="vote"><strong>91%</strong> of người mua hài lòng với sản phẩm này <strong>(87 bình
                             chọn)</strong>
                     </p>
-
                     <h5 class="colors">Màu: <span class="color orange not-available" data-toggle="tooltip"
                             title="Not In store"></span>
                         <span class="color red"></span>
                         <span class="color blue"></span>
                         <span class="color black"></span>
                     </h5>
-
                     <div class="row">
                         <button class="add-to-cart btn btn-default" type="button" style="height: 50px;">MUA NGAY</button>
-
                     </div>
                 </div>
             </div>

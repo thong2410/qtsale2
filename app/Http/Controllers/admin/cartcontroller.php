@@ -121,7 +121,7 @@ class cartcontroller extends Controller
         Cart::destroy();
         return view('page.checkoutyes', ['order_id' => $orders_id]);
     }
-    public function xacnhantinhtrang(Request $request)
+    public function confirmstatus(Request $request)
     {
         $id = $request->order_id;
         $id_tinh_trangyes = $request->id_stt;

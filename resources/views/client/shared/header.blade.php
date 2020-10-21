@@ -68,7 +68,7 @@
                                 <ul class="sub-menu">
                                     <li><a href="{{URL::to('/')}}">Thông Tin Tài Khoản</a>
                                     </li>
-                                    <li><a href="admin/orders/don-hang-cua-toi">Đơn Hàng của Tôi</a>
+                                    <li><a href="admin/orders/my-order">Đơn Hàng của Tôi</a>
                                     </li>
                                     <li><a href="{{route('logout')}}">Đăng Xuất</a>
                                     </li>
