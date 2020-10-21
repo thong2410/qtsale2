@@ -112,8 +112,8 @@
                 chọn)</strong>
             </p>
             <div class="row">
-                <a href="gio-hang/them/{{ $sanpham->product_id }}">
-                <button class="add-to-cart btn btn-default" type="button" style="height: 50px;">Thêm giỏ hàng</button></a>
+
+                <button class="add-to-cart btn btn-default" type="button" style="height: 50px;">Thêm giỏ hàng</button>
             </div>
         </article>
     </div>
