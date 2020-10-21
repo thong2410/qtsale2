@@ -113,7 +113,7 @@
             </p>
             <div class="row">
 
-                <button class="add-to-cart btn btn-default" type="button" style="height: 50px;">Thêm giỏ hàng</button>
+               <button class="add-to-cart btn btn-default" type="button" style="height: 50px;">MUA NGAY</button>
             </div>
         </article>
     </div>
