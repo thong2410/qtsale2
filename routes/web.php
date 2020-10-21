@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\admin\ordercontroller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,14 +32,14 @@ Route::get('loginn', 'LoginController@GetLogin');
 
 
 //cart
-Route::group(['prefix' => 'gio-hang'], function () {
-    Route::get('them/{id?}', 'admin\cartcontroller@AddProduct');
-    Route::get('gio-hang', 'admin\cartcontroller@ListCart');
-    Route::get('xoa/{rowId?}', 'admin\cartcontroller@deletecart');
-    Route::post('cap-nhap-soluong', 'admin\cartcontroller@updatequantity');
-    Route::get('thanh-toan', 'admin\cartcontroller@checkout');
-    Route::post('thanh-toan', 'admin\cartcontroller@Postcheckout');
-    Route::post('thanhcong', 'admin\cartcontroller@Postcheckout');
+Route::group(['prefix' => 'cart'], function () {
+    Route::get('add/{id?}', 'admin\cartcontroller@AddProduct');
+    Route::get('list-cart', 'admin\cartcontroller@ListCart');
+    Route::get('delete/{rowId?}', 'admin\cartcontroller@deletecart');
+    Route::post('update-quantity', 'admin\cartcontroller@updatequantity');
+    Route::get('checkout', 'admin\cartcontroller@checkout');
+    Route::post('checkout', 'admin\cartcontroller@Postcheckout');
+    Route::post('success', 'admin\cartcontroller@Postcheckout');
 
 
 });
@@ -93,19 +95,19 @@ Route::group(['prefix' => 'admin'], function () {
     });
     Route::group(['prefix' => 'orders'], function () {
         route::get('order', 'admin\ordercontroller@getorder');
-        Route::get('xoa/{order_id?}', 'admin\ordercontroller@deleteorder');
-        route::get('chitiet/{order_id?}', 'admin\ordercontroller@orderitems');
-        Route::post('xac-nhan-tinh-trang', 'admin\cartcontroller@xacnhantinhtrang');
-        Route::get('tinh-trang/cho-xu-ly', 'admin\ordercontroller@choxuly'); // 1
-        Route::get('tinh-trang/dang-giao-hang', 'admin\ordercontroller@danggiaohang'); // 2
-        Route::get('tinh-trang/da-giao', 'admin\ordercontroller@dagiao'); //3
-        Route::get('tinh-trang/da-huy', 'admin\ordercontroller@dahuy'); //4
-        Route::get('don-hang-cua-toi', 'admin\ordercontroller@donhangcuatoi');
+        Route::get('delete/{order_id?}', 'admin\ordercontroller@deleteorder');
+        route::get('detail/{order_id?}', 'admin\ordercontroller@orderitems');
+        Route::post('confirm_status', 'admin\cartcontroller@confirmstatus');
+        // Route::get('tinh-trang/cho-xu-ly', 'admin\ordercontroller@choxuly'); // 1
+        // Route::get('tinh-trang/dang-giao-hang', 'admin\ordercontroller@danggiaohang'); // 2
+        // Route::get('tinh-trang/da-giao', 'admin\ordercontroller@dagiao'); //3
+        // Route::get('tinh-trang/da-huy', 'admin\ordercontroller@dahuy'); //4
+        Route::get('my-order', 'admin\ordercontroller@myorder');
 
     });
 });
 
-//login
+// //login
 Route::get('sigup', 'LoginController@GetSigup');
 Route::post('sigup', 'LoginController@PostSigup');
 Route::get('authlogin', 'LoginController@GetLogin');
@@ -116,6 +118,9 @@ Route::get('/logout', function() {
     return redirect("/");
 })->name('logout');
 
+
+
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');

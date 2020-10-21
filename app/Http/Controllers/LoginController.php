@@ -28,7 +28,7 @@ class LoginController extends Controller
     }
 
     public function PostLogin (Request $request){
-        
+
         $arr = [
             'customer_email'=>$request->customer_email,
             'password'=>$request->password
@@ -40,10 +40,10 @@ class LoginController extends Controller
             return redirect()->back()->with('errLogin', 'Email hoặc mật khẩu sai!');
         }
 
-       
-        
+
+
     }
-    
+
     public function GetSigup (){
         $loai = type_product::all()->toArray();
         return view("page.sigup")->with('type_Products',$loai);;

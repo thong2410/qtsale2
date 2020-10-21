@@ -29,39 +29,39 @@ class ordercontroller extends Controller
     }
 
 
-    public function choxuly()
-    {
-        $db = orders::where('id_stt', 1)->paginate(15);
-        return view('admin.orders.order', ['db' => $db]);
-    }
-    public function danggiaohang()
-    {
-        $db = orders::where('id_stt', 2)->paginate(15);
-        return view('admin.orders.order', ['db' => $db]);
-    }
-    public function dagiao()
-    {
-        $db = orders::where('id_stt', 3)->paginate(15);
-        return view('admin.orders.order', ['db' => $db]);
-    }
-    public function dahuy()
-    {
-        $db = orders::where('id_stt', 4)->paginate(15);
-        return view('admin.orders.order', ['db' => $db]);
-    }
-    public function donhangcuatoi()
+    // public function choxuly()
+    // {
+    //     $db = orders::where('id_stt', 1)->paginate(15);
+    //     return view('admin.orders.order', ['db' => $db]);
+    // }
+    // public function danggiaohang()
+    // {
+    //     $db = orders::where('id_stt', 2)->paginate(15);
+    //     return view('admin.orders.order', ['db' => $db]);
+    // }
+    // public function dagiao()
+    // {
+    //     $db = orders::where('id_stt', 3)->paginate(15);
+    //     return view('admin.orders.order', ['db' => $db]);
+    // }
+    // public function dahuy()
+    // {
+    //     $db = orders::where('id_stt', 4)->paginate(15);
+    //     return view('admin.orders.order', ['db' => $db]);
+    // }
+    public function myorder()
     {
         $id = Auth::user()->customer_id;
 
-        $hoadon = orders::where([
+        $order = orders::where([
             ['id_stt','<=', 3],
             ['customer_id', $id],
             ])->latest('order_id')->get();
 
-        $sohoadon = orders::where([
+        $orders = orders::where([
             ['id_stt','<=', 3],
             ['customer_id', $id],
             ])->latest('order_id')->count();
-        return view('page.orderuser', ['db' => $hoadon, 'sodon' => $sohoadon]);
+        return view('page.orderuser', ['db' => $order, 'sodon' => $orders]);
     }
 }
