@@ -46,28 +46,28 @@ Route::group(['prefix' => 'cart'], function () {
 
 
 
+Route::get('/',[
+    'as'=>'trang-chu',
+    'uses'=>'PageController@getIndex'
+]);
+Route::get('type/{type?}',[
+'as'=>'type',
+'uses'=>'PageController@getTypeproduct'
+]);
+Route::get('product',[
+    'as'=>'product',
+    'uses'=>'PageController@getProduct'
+]);
+Route::get('details/{product_id}',[
+    'as'=>'details',
+    'uses'=>'PageController@GetProductdetails'
+]);
 
-Route::get('/', [
-    'as' => 'trang-chu',
-    'uses' => 'PageController@getIndex'
-]);
-Route::get('loaisanpham/{type?}', [
-    'as' => 'loaisanpham',
-    'uses' => 'PageController@getLoaiSP'
-]);
-Route::get('product', [
-    'as' => 'product',
-    'uses' => 'PageController@getProduct'
-]);
-Route::get('chitietsanpham/{product_id}', [
-    'as' => 'chitietsanpham',
-    'uses' => 'PageController@getChiTietSP'
+Route::get('search',[
+    'as'=>'search',
+    'uses'=>'PageController@getSearch'
 ]);
 
-Route::get('search', [
-    'as' => 'search',
-    'uses' => 'PageController@getSearch'
-]);
 
 
 // admin
