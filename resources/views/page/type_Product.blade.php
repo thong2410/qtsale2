@@ -28,28 +28,28 @@
 <section class="container">
     <div class="sp1" style="width: 100%; height: auto;">
         <div style="height: 200px;" >
-            <h2 style="padding: 20px; text-align: center; font-size:50px">{{$loai_sp->name}}</h2>
+            <h2 style="padding: 20px; text-align: center; font-size:50px">{{$type_product->name}}</h2>
             <p style="text-align: center">—————————————————————— ❉ ——————————————————————</p>
-            <p style="text-align: center; font-size:20px" >Những sản phẩm <b>{{$loai_sp->name}}</b> mới nhất/hot nhất</p>
+            <p style="text-align: center; font-size:20px" >Những sản phẩm <b>{{$type_product->name}}</b> mới nhất/hot nhất</p>
         </div>
         <form role="search" class="searchcontainer" method="get" id="searchform" action="{{route('search')}}">
 
             <input type="text" value="" name="key" id="key"  class="searchinput" placeholder="Nhập từ khóa..." />
         </form>
         <div class="card-deck" style="padding: 10px;">
-            @foreach ($SP_theoloai as $sp)
-                <div style="width: 24%; float: left;height: 350px; margin-bottom: 80px;margin-left:10px;  box-shadow: 4px 4px       10px#888888;">
-                    <a href="{{route('chitietsanpham',$sp->product_id)}}"><img src="../codeADM/images/product/{{$sp['image']}}" class="card-img-top" style="height: 350px; padding: 40px;" alt="Image"></a>
-                    <a href="#giohang">
-                        <div class="card-footer">
-                            <span class="flash-sale" style="width: 100%;font-size:17px;"><p style="text-align: center; font-size: 20px;font-weight: bold;color: #333333	; padding: 1em; display:inline-block;">{{number_format($sp->price)}} đồng</p></span>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
+            @foreach ($products_by_type as $sp)
+            <div style="width: 24%; float: left;height: 350px; margin-bottom: 80px;margin-left:10px;  box-shadow: 4px 4px       10px#888888;">
+                <a href="{{route('details',$sp->product_id)}}"><img src="../codeADM/images/product/{{$sp['image']}}" class="card-img-top" style="height: 350px; padding: 40px;" alt="Image"></a>
+                <a href="#giohang">
+                    <div class="card-footer">
+                        <span class="flash-sale" style="width: 100%;font-size:17px;"><p style="text-align: center; font-size: 20px;font-weight: bold;color: #333333	; padding: 1em; display:inline-block;">{{number_format($sp->price)}} đồng</p></span>
+                    </div>
+                </a>
+            </div>
+            <?php endforeach ?>
         </div>
         <div class="container-fluid " style="padding-left: 470px">
-            {!! $SP_theoloai->links() !!}
+            {!! $products_by_type->links() !!}
         </div>
     </div>
     <div class="sp khac" style="clear: both">
@@ -58,9 +58,9 @@
             <p style="text-align: center">—————————————————————— ❉ ——————————————————————</p>
             <p style="text-align: center; font-size:20px" >Những sản phẩm thời trang mới nhất/hot nhất</p>
         </div>
-        @foreach ($sp_khac as $sp)
+        @foreach ($other_products as $sp)
         <div style="width: 24%; float: left;height: 350px; margin-bottom: 80px;margin-left:10px;  box-shadow: 4px 4px       10px#888888;">
-            <a href="{{route('chitietsanpham',$sp->product_id)}}"><img src="../codeADM/images/product/{{$sp['image']}}" class="card-img-top" style="height: 350px; padding: 40px;" alt="Image"></a>
+            <a href="{{route('details',$sp->product_id)}}"><img src="../codeADM/images/product/{{$sp['image']}}" class="card-img-top" style="height: 350px; padding: 40px;" alt="Image"></a>
             <a href="#giohang">
                 <div class="card-footer">
                     <span class="flash-sale" style="width: 100%;font-size:17px;"><p style="text-align: center; font-size: 20px;font-weight: bold;color: #333333	; padding: 1em; display:inline-block;">{{number_format($sp->price)}} đồng</p></span>
@@ -70,7 +70,7 @@
         <?php endforeach ?>
     </div>
     <div class="container-fluid " style="padding-left: 470px">
-        {!! $sp_khac->links() !!}
+        {!! $other_products->links() !!}
     </div>
 </section>
 @include('client.layout.footer')

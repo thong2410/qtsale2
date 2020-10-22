@@ -43,7 +43,8 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="#">Tin Tức</a>
+                            <li>
+                                <a href="#">Tin Tức</a>
                                 <ul class="sub-menu">
                                     <li><a href="#">Tư vấn giải pháp</a>
                                     </li>
@@ -53,28 +54,43 @@
                                     </li>
                                 </ul>
                             </li>
-                            @guest
-                            <li><a href="#">Tài Khoản</a>
-                                <ul class="sub-menu">
-                                    <li><a href="{{URL::to('/authlogin')}}">Đăng Nhập</a>
-                                    </li>
-
-                                    <li><a href="{{URL::to('/sigup')}}">Đăng Kí</a>
-                                    </li>
-                                </ul>
+                            <li>
+                                @if (Route::has('login'))
+                                    @auth
+                                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">{{ Auth::user()->name }}</a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="#">{{ __('Manage Account') }}</a>
+                                            </li>
+                                            <li><a href="{{ route('profile.show') }}">{{ __('Profile') }}</a>
+                                            </li>
+                                            <li>
+                                                <form method="POST" action="{{ route('logout') }}">
+                                                    @csrf
+                        
+                                                    <x-jet-dropdown-link href="{{ route('logout') }}"
+                                                                        onclick="event.preventDefault();
+                                                                                    this.closest('form').submit();">
+                                                        {{ __('Logout') }}
+                                                    </x-jet-dropdown-link>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    @else
+                                    <a href="#">Tài Khoản</a>
+                                    <ul class="sub-menu">
+                                        <li>  
+                                            <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
+                                        </li>
+                                        <li>
+                                            @if (Route::has('register'))
+                                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                                            @endif
+                                        </li>
+                                    </ul>
+                                    @endif
+                                @endif
                             </li>
-                            @else
-                            <li><a href="#">{{Auth::user()->customer_name}}</a>
-                                <ul class="sub-menu">
-                                    <li><a href="{{URL::to('/')}}">Thông Tin Tài Khoản</a>
-                                    </li>
-                                    <li><a href="admin/orders/don-hang-cua-toi">Đơn Hàng của Tôi</a>
-                                    </li>
-                                    <li><a href="{{route('logout')}}">Đăng Xuất</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            @endif
                         </ul>
                     </nav>
                     {{-- <form role="search" method="get" id="searchform" action="{{route('search')}}">

@@ -19,11 +19,11 @@
                                 </ul>
                             </li>
                         <li><a href="{{route('product')}}">Sản Phẩm</a>
-                                <ul class="sub-menu">
+                                {{-- <ul class="sub-menu">
                                     <?php foreach ($type_Products as $value): ?>
                                         <li><a href="{{route('loaisanpham',$value['id_type'])}}">{{$value['name']}}</a></li>
                                     <?php endforeach ?>
-                                </ul>
+                                </ul> --}}
                             </li>
                             <li><a href="#">Giải Pháp</a>
                                 <ul class="sub-menu">
@@ -53,8 +53,44 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a class="scrollTo" data-scrollTo="contact" href="#">Liên Hệ</a></li>
-                            <li class="Hotline"><button type="button" class="btn btn-primary">Hotline</button></li>
+                            <li>
+                                @if (Route::has('login'))
+                                    @auth
+                                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">{{ Auth::user()->name }}</a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="#">{{ __('Manage Account') }}</a>
+                                            </li>
+                                            <li><a href="{{ route('profile.show') }}">{{ __('Profile') }}</a>
+                                            </li>
+                                            <li>
+                                                <form method="POST" action="{{ route('logout') }}">
+                                                    @csrf
+                        
+                                                    <x-jet-dropdown-link href="{{ route('logout') }}"
+                                                                        onclick="event.preventDefault();
+                                                                                    this.closest('form').submit();">
+                                                        {{ __('Logout') }}
+                                                    </x-jet-dropdown-link>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    @else
+                                    <a href="#">Tài Khoản</a>
+                                    <ul class="sub-menu">
+                                        <li>  
+                                            <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
+                                        </li>
+                                        <li>
+                                            @if (Route::has('register'))
+                                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                                            @endif
+                                        </li>
+                                    </ul>
+                                    @endif
+                                @endif
+                            </li>
+                           
                         </ul>
                     </nav>
                 </div>
