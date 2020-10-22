@@ -158,14 +158,6 @@
                         </li>
                     </ul>
                   </div>
-                  <div class="checkout__order__total">
-                    <ul>
-
-                        <li>Total <span>{{ Cart::subtotal() }} đ</span></li>
-                    </ul>
-                </div>
-                <button type="submit" class="site-btn">Buy now</button>            </div>
-               
             </form>
         </div>
     </div>
