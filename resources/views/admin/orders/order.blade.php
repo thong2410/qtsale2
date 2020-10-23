@@ -1,7 +1,19 @@
 @extends('admin.layout.master2')
 @section('content')
 <div class="row">
-
+    {{-- <div class="col-lg-4">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Tình trạng
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <a href="status/Processing"><button class="dropdown-item" type="button">Chờ xử lý</button></a>
+          <a href="status/shipping"><button class="dropdown-item" type="button">Đang giao hàng</button></a>
+          <a href="status/delivered"><button class="dropdown-item" type="button">Đã giao hàng</button></a>
+          <a href="status/cancel"><button class="dropdown-item" type="button">Đã hủy</button></a>
+          </div>
+        </div>
+       </div> --}}
     <div class="col-md-12 grid-margin">
     <div class="card">
       <div class="card-body">
@@ -25,12 +37,12 @@
                 @foreach ($db as $item)
                 <tr>
                   <th scope="row">{{ $item ->order_id }}</th>
-                  <td>{{ $item->customer_id }}</td>
+                  <td>{{ $item->id_users }}</td>
                   <td>{{ $item->order_name }}</td>
                   <td>{{ $item ->order_sdt }}</td>
                   <td>{{ number_format($item ->total_price,2,",",".") }} VNĐ</td>
                   <td>{{$item->getstatus->status_order }}</td>
-                 <td><form action="xac-nhan-tinh-trang" method="POST">
+                 <td><form action="confirm-status" method="POST">
                     @csrf
                  <input type="hidden" name="order_id" value="{{$item->order_id}}" >
 
@@ -46,8 +58,8 @@
                   </form></td>
 
 
-                  <td><a class="btn btn-success" href="chitiet/{{ $item ->order_id }}">Chi tiết</a></td>
-                  <td><a class="btn btn-danger" href="xoa/{{ $item ->order_id }}">Xóa</a></td>
+                  <td><a class="btn btn-success" href="detail/{{ $item ->order_id }}">Chi tiết</a></td>
+                  <td><a class="btn btn-danger" href="delete/{{ $item ->order_id }}">Xóa</a></td>
 
                 </tr>
               @endforeach
