@@ -1,52 +1,52 @@
 @include('client.layout.master')
-<style type="text/css">.table&amp;amp;gt;tbody&amp;amp;gt;tr&amp;amp;gt;td, .table&amp;amp;gt;tfoot&amp;amp;gt;tr&amp;amp;gt;td {  
+<style type="text/css">.table&amp;amp;gt;tbody&amp;amp;gt;tr&amp;amp;gt;td, .table&amp;amp;gt;tfoot&amp;amp;gt;tr&amp;amp;gt;td {
     vertical-align: middle;
     }
-     
-    @media screen and (max-width: 600px) { 
-    table#cart tbody td .form-control { 
-    width:20%; 
+
+    @media screen and (max-width: 600px) {
+    table#cart tbody td .form-control {
+    width:20%;
     display: inline !important;
-    } 
-     
-    .actions .btn { 
-    width:36%; 
+    }
+
+    .actions .btn {
+    width:36%;
     margin:1.5em 0;
-    } 
-     
-    .actions .btn-info { 
+    }
+
+    .actions .btn-info {
     float:left;
-    } 
-     
-    .actions .btn-danger { 
+    }
+
+    .actions .btn-danger {
     float:right;
-    } 
-     
+    }
+
     table#cart thead {
     display: none;
-    } 
-     
+    }
+
     table#cart tbody td {
     display: block;
     padding: .6rem;
     min-width:320px;
-    } 
-     
+    }
+
     table#cart tbody tr td:first-child {
     background: #333;
     color: #fff;
-    } 
-     
-    table#cart tbody td:before { 
+    }
+
+    table#cart tbody td:before {
     content: attr(data-th);
-    font-weight: bold; 
+    font-weight: bold;
     display: inline-block;
     width: 8rem;
-    } 
-     
+    }
+
     table#cart tfoot td {
     display:block;
-    } 
+    }
     table#cart tfoot td .btn {
     display:block;
     }
@@ -156,8 +156,8 @@
                         </div>
                     </td>
                     <td data-th="Price"><h4 style="margin-top: 1.3em; ">{{ number_format($prod->price,0,',','.')  }}đ</h4></td>
-                    <td data-th="qty"> 
-                            <form action="cap-nhap-soluong" method="post">
+                    <td data-th="qty">
+                            <form action="update-quantity" method="post">
                                 <div>
                                     @csrf
                                     <input type="hidden" name="rowId" value="{{ $prod->rowId }}">
@@ -166,14 +166,14 @@
                                 </td>
                                 <td  data-th="Price" class="text-center"> <h4 style="margin-top: 1.3em">{{ number_format($prod->price * $prod->qty,0,',','.') }} đ</h4></td>
                                 <td class="cart__total"> <button class="btn btn-success" type="submit">Update</button></td>
-                                <td class="cart__close"><a href="xoa/{{ $prod->rowId }}"><span class="btn btn-danger">xoa</span></a></td>
-                                
+                                <td class="cart__close"><a href="delete/{{ $prod->rowId }}"><span class="btn btn-danger">xoa</span></a></td>
+
                             </form>
-                            
+
                     </td>
-                    
+
                 </tr>
-              
+
                 @endforeach
                 <?php $i++ ?>
             </tbody>
@@ -186,9 +186,9 @@
                     <td class="hidden-xs text-center" data-th="Price">
                         <strong>Tổng tiền {{ Cart::subtotal() }} đ</span></strong>
                     </td>
-                   
+
                     <td>
-                        <a href="thanh-toan" class="btn btn-success btn-block">Thanh toán <i class="fa fa-angle-right"></i></a>
+                        <a href="checkout" class="btn btn-success btn-block">Thanh toán <i class="fa fa-angle-right"></i></a>
                     </td>
                 </tr>
             </tfoot>
