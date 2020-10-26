@@ -29,29 +29,29 @@ class ordercontroller extends Controller
     }
 
 
-    // public function Processing()
-    // {
-    //     $db = orders::where('id_stt', 1)->paginate(15);
-    //     return view('admin.orders.order', ['db' => $db]);
-    // }
-    // public function shipping()
-    // {
-    //     $db = orders::where('id_stt', 2)->paginate(15);
-    //     return view('admin.orders.order', ['db' => $db]);
-    // }
-    // public function delivered()
-    // {
-    //     $db = orders::where('id_stt', 3)->paginate(15);
-    //     return view('admin.orders.order', ['db' => $db]);
-    // }
-    // public function cancel()
-    // {
-    //     $db = orders::where('id_stt', 4)->paginate(15);
-    //     return view('admin.orders.order', ['db' => $db]);
-    // }
-    public function myorder()
+    public function choxuly()
     {
-        $id = Auth::user()->id;
+        $db = orders::where('id_stt', 1)->paginate(15);
+        return view('admin.orders.order', ['db' => $db]);
+    }
+    public function danggiaohang()
+    {
+        $db = orders::where('id_stt', 2)->paginate(15);
+        return view('admin.orders.order', ['db' => $db]);
+    }
+    public function dagiao()
+    {
+        $db = orders::where('id_stt', 3)->paginate(15);
+        return view('admin.orders.order', ['db' => $db]);
+    }
+    public function dahuy()
+    {
+        $db = orders::where('id_stt', 4)->paginate(15);
+        return view('admin.orders.order', ['db' => $db]);
+    }
+    public function donhangcuatoi()
+    {
+        $id = Auth::user()->customer_id;
 
         $hoadon = orders::where([
             ['id_stt','<=', 3],

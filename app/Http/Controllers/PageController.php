@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\products;
 use App\type_product;
+use App\Models\Comment;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -24,12 +26,24 @@ class PageController extends Controller
         $new_products = products::orderBy('product_id', 'DESC')->paginate(4);
         return view('page.product', compact('new_products'))->with('type_Products',$types);
     }
-    public function GetProductdetails(Request $req){
+
+    public function GetProductdetails(Request $request, $id){
         $types = type_product::all()->toArray();
-        $product = products::where('product_id',$req->product_id)->first();
+        $product = products::where('product_id',$request->product_id)->first();
         $similar_product = products::where('id_type', $product->id_type)->paginate(8);
-        return view('Page.product_details',compact('product','similar_product'))->with('type_Products',$types);
+        $data['comments'] = Comment::where('id_product' , $id)->paginate(10);
+        return view('Page.product_details', $data ,compact('product','similar_product'))->with('type_Products',$types);
     }
+    public function PostComment(Request $request, $id){
+        $comment = new Comment;
+        $comment->id_product = $id;
+        $comment->id_users = Auth::user()->id;
+        $comment->comment = $request->comment;
+        $comment->username = Auth::user()->name;
+        $comment->save();   
+        return back();
+    }
+    
     public function getSearch(Request $req){
         $types = type_product::all()->toArray();
         $product = products::where('name','like','%'.$req->key.'%')

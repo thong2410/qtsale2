@@ -54,7 +54,7 @@
         <p style="text-align: center; font-size:20px" >Những sản phẩm thời trang mới nhất/hot nhất</p>
     </div>
 <div class="row">
-   <a href="cart/list-cart"> <i class="fa fa-shopping-bag" style="font-size:40px;float:right"> {{ Cart::count()}}</i></a>
+   <a href="gio-hang/gio-hang"> <i class="fa fa-shopping-bag" style="font-size:40px;float:right"> {{ Cart::count()}}</i></a>
 </div>
 
 
@@ -72,7 +72,7 @@
                 <p class="lead" style="text-align: center">{{number_format($new->price)}} đồng</p>
                </div>
                <div class="col-xs-12">
-                <a href="cart/add/{{ $new->product_id }}" class="btn btn-danger col-lg-12">Thêm vào giỏ hàng</a>
+                <a href="gio-hang/them/{{ $new->product_id }}" class="btn btn-danger col-lg-12">Thêm vào giỏ hàng</a>
                </div>
               </div>
              </div>

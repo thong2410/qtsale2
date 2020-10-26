@@ -101,6 +101,12 @@
               </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="../../admin/comment/list">
+                  <i class="menu-icon typcn typcn-th-large-outline"></i>
+                  <span class="menu-title">Bình Luận</span>
+                </a>
+              </li>
+            <li class="nav-item">
               <a class="nav-link" href="#nguoidungcuaTra">
                 <i class="menu-icon typcn typcn-bell"></i>
                 <span class="menu-title">Người dùng</span>

@@ -64,11 +64,12 @@
                                             </li>
                                             <li><a href="{{ route('profile.show') }}">{{ __('Profile') }}</a>
                                             </li>
-                                            <li><a href="admin/orders/my-order">My order</a></li>
+                                             <li><a href="admin/orders/don-hang-cua-toi">Đơn Hàng của Tôi</a>
+                                    </li>
                                             <li>
                                                 <form method="POST" action="{{ route('logout') }}">
                                                     @csrf
-
+                        
                                                     <x-jet-dropdown-link href="{{ route('logout') }}"
                                                                         onclick="event.preventDefault();
                                                                                     this.closest('form').submit();">
@@ -80,7 +81,7 @@
                                     @else
                                     <a href="#">Tài Khoản</a>
                                     <ul class="sub-menu">
-                                        <li>
+                                        <li>  
                                             <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
                                         </li>
                                         <li>

@@ -77,7 +77,4 @@
 
         GPĐKKD số: 0108964497 do Sở KHĐT Tp.Hà Nội cấp ngày 29/10/2019  </p>
     </div>
-    <div class="zalo-chat-widget" data-oaid="4130384995344077176" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="310" data-height="370"></div>
-
-    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
 </div>

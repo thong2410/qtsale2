@@ -83,7 +83,7 @@
     </div>
 </div> --}}
 <section class="container">
-    <div class="sp1" style="width: 100%; height: auto;">
+    <div class="sp1" style="width: 100%; height: 500px;">
         <div style="width: 45%; float: left; height: 500px;">
             <img src="../codeADM/images/product/{{$product->image}}" style="height:500px;width: 500px;padding: 5px;border: 1px solid;box-shadow: 1px 1px inset; border-radius: 15px;">
         </div>
@@ -108,7 +108,7 @@
             <div>
                 <h4 class="price">Giá bán: {{number_format($product->price)}} đồng</h4>
             </div>
-            <p class="vote"><strong>91%</strong> of người mua hài lòng với sản phẩm này <strong>(87 bình
+            <p class="vote"><strong>91%</strong> of người mua hài lòng với sản phẩm này <strong>({{count($comments)}} bình
                 chọn)</strong>
             </p>
             <div class="row">
@@ -116,6 +116,37 @@
             </div>
         </article>
     </div>
+    {{-- comment --}}
+    <div style="width: 100%; height: auto;"><hr>
+        <h3>Bình Luận về sản phẩm</h3>
+        @if (Route::has('login'))
+        @auth
+        <form action = "../../details/{{$product->product_id}}" method="POST" enctype="multipart/form-data">
+            <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
+            <div class="form-group">
+                <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+            </div>
+            <button class="btn btn-default" type="submit" style="height: 50px;">Gui</button>
+        </form>
+        <br> 
+        @else 
+    <button class="btn btn-primary"><a href="{{route('login')}}" style="color: white">Login</a></button>
+        @endif
+        @endif
+        @foreach ($comments as $comment)
+        <div class="">
+            <div  style="background-color: white ; padding:4px; border-radius: 5px;">
+                <h4>{{$comment->username}}</h4>
+                <p>{{$comment->comment}}</p>
+                {{-- <p>{{$comment->created_at}}</p> --}}
+            </div>
+        </div>
+        @endforeach
+
+    </div>
+    {{-- /comment --}}
+  
+        
     <div class="sp khac" style="clear: both"><br>
         <hr>
         <div style="height: 200px;" >
@@ -133,6 +164,7 @@
             </a>
         </div>
         <?php endforeach ?>
+
     </div>
     <div class="container-fluid " style="padding-left: 470px">
         {!! $similar_product->links() !!}
