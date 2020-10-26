@@ -75,7 +75,7 @@ class cartcontroller extends Controller
         $orders_id = orders::insertGetId([
             'id_users' =>$request->id,
             'id_stt' => 1,
-            'order_date' => Carbon::now('Asia/Ho_Chi_Minh'),
+            'order_date' => Carbon::now(),
             'order_name' => $request->order_name,
             'order_sdt' => $request->order_sdt,
             'total_price' => (int) $total_price,
@@ -120,7 +120,7 @@ class cartcontroller extends Controller
         Cart::destroy();
         return view('page.checkoutyes', ['order_id' => $orders_id]);
     }
-    public function confirmstatus(Request $request)
+    public function xacnhantinhtrang(Request $request)
     {
         $id = $request->order_id;
         $id_tinh_trangyes = $request->id_stt;

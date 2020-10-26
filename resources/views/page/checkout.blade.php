@@ -157,7 +157,8 @@
                             <button class="site-btn" type="submit" style="width: 100%;height: 30px;">Buy Now</button>
                         </li>
                     </ul>
-                  </div>
+                </div>
+               
             </form>
         </div>
     </div>

@@ -28,14 +28,14 @@ Route::get('admin/search', [
 ]);
 
 //cart
-Route::group(['prefix' => 'cart'], function () {
-    Route::get('add/{id?}', 'App\Http\Controllers\admin\cartcontroller@AddProduct');
-    Route::get('list-cart', 'App\Http\Controllers\admin\cartcontroller@ListCart');
-    Route::get('delete/{rowId?}', 'App\Http\Controllers\admin\cartcontroller@deletecart');
-    Route::post('update-quantity', 'App\Http\Controllers\admin\cartcontroller@updatequantity');
-    Route::get('checkout', 'App\Http\Controllers\admin\cartcontroller@checkout');
-    Route::post('checkout', 'App\Http\Controllers\admin\cartcontroller@Postcheckout');
-    Route::post('success', 'App\Http\Controllers\admin\cartcontroller@Postcheckout');
+Route::group(['prefix' => 'gio-hang'], function () {
+    Route::get('them/{id?}', 'App\Http\Controllers\admin\cartcontroller@AddProduct');
+    Route::get('gio-hang', 'App\Http\Controllers\admin\cartcontroller@ListCart');
+    Route::get('xoa/{rowId?}', 'App\Http\Controllers\admin\cartcontroller@deletecart');
+    Route::post('cap-nhap-soluong', 'App\Http\Controllers\admin\cartcontroller@updatequantity');
+    Route::get('thanh-toan', 'App\Http\Controllers\admin\cartcontroller@checkout');
+    Route::post('thanh-toan', 'App\Http\Controllers\admin\cartcontroller@Postcheckout');
+    Route::post('thanhcong', 'App\Http\Controllers\admin\cartcontroller@Postcheckout');
 
 
 });
@@ -54,14 +54,17 @@ Route::get('product',[
     'as'=>'product',
     'uses'=>'App\Http\Controllers\PageController@getProduct'
 ]);
+Route::get('search',[
+    'as'=>'search',
+    'uses'=>'App\Http\Controllers\PageController@getSearch'
+]);
 Route::get('details/{product_id}',[
     'as'=>'details',
     'uses'=>'App\Http\Controllers\PageController@GetProductdetails'
 ]);
-
-Route::get('search',[
-    'as'=>'search',
-    'uses'=>'App\Http\Controllers\PageController@getSearch'
+Route::post('details/{product_id}',[
+    'as'=>'comment',
+    'uses'=>'App\Http\Controllers\PageController@PostComment'
 ]);
 
 
@@ -91,10 +94,19 @@ Route::group(['prefix' => 'admin'], function () {
     });
     Route::group(['prefix' => 'orders'], function () {
         route::get('order', 'App\Http\Controllers\admin\ordercontroller@getorder');
-        Route::get('delete/{order_id?}', 'App\Http\Controllers\admin\ordercontroller@deleteorder');
-        route::get('detail/{order_id?}', 'App\Http\Controllers\admin\ordercontroller@orderitems');
-        Route::post('confirm-status', 'App\Http\Controllers\admin\cartcontroller@confirmstatus');
-        Route::get('my-order', 'App\Http\Controllers\admin\ordercontroller@myorder');
+        Route::get('xoa/{order_id?}', 'App\Http\Controllers\admin\ordercontroller@deleteorder');
+        route::get('chitiet/{order_id?}', 'App\Http\Controllers\admin\ordercontroller@orderitems');
+        Route::post('xac-nhan-tinh-trang', 'App\Http\Controllers\admin\cartcontroller@xacnhantinhtrang');
+        Route::get('tinh-trang/cho-xu-ly', 'App\Http\Controllers\admin\ordercontroller@choxuly'); // 1
+        Route::get('tinh-trang/dang-giao-hang', 'App\Http\Controllers\admin\ordercontroller@danggiaohang'); // 2
+        Route::get('tinh-trang/da-giao', 'App\Http\Controllers\admin\ordercontroller@dagiao'); //3
+        Route::get('tinh-trang/da-huy', 'App\Http\Controllers\admin\ordercontroller@dahuy'); //4
+        Route::get('don-hang-cua-toi', 'App\Http\Controllers\admin\ordercontroller@donhangcuatoi');
+
+    });
+    Route::group(['prefix' => 'comment'], function () {
+        Route::get('list', 'App\Http\Controllers\admin\CommentControllerAdmin@GetProductdetails');
+        Route::get('delete3/{id}', 'App\Http\Controllers\admin\CommentControllerAdmin@getDelete')->name('delete3');
 
     });
 });
